@@ -4,7 +4,7 @@ project(AuthenticationSystem)
 set(CMAKE_CXX_STANDARD 17)
 
 # Add your source files
-add_executable(AuthSystem main.cpp)
+add_executable(AuthSystem projetC++.cpp)
 
 # Link OpenSSL for SHA-256 hashing
 find_package(OpenSSL REQUIRED)
