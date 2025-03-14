@@ -1,0 +1,43 @@
+name: C++ CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Set up C++ toolchain (e.g., g++ for Ubuntu)
+      - name: Set up C++ toolchain
+        uses: actions/setup-cpp@v1
+
+      # Step 3: Install dependencies (if any)
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+
+      # Step 4: Build the C++ code
+      - name: Build the project
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make
+
+      # Step 5: Run tests (if applicable)
+      - name: Run tests
+        run: |
+          cd build
+          ./your_test_executable   # Replace with the name of your test executable
+
